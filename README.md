@@ -6,7 +6,7 @@ Removes subscription dialogs, replaces enterprise repository with non-subscripti
 
 Use at your own risk! Read the script before you run it. 
 
-## Use
+## Install
 
 1. Connect to node via SSH
 2. Run

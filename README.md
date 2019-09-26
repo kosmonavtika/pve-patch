@@ -1,6 +1,6 @@
 # pve-patch
 
-Removes subscription dialogs, replaces enterprise repository with non-subscription repository and replaces branding. Tested on PVE 6.0-1.
+Removes subscription dialogs, replaces enterprise repository with non-subscription repository and replaces branding. Tested on PVE 6.0-7.
 
 ## Note
 

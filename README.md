@@ -12,5 +12,6 @@ Use at your own risk! Read the script before you run it.
 2. Run
 
 ```bash
+# with sudo if not root
 wget -qO - https://raw.githubusercontent.com/kosmonavtika/pve-patch/master/patch.sh | bash
 ```

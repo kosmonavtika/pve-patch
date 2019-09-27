@@ -15,3 +15,18 @@ Use at your own risk! Read the script before you run it.
 # with sudo if not root
 wget -qO - https://raw.githubusercontent.com/kosmonavtika/pve-patch/master/patch.sh | bash
 ```
+
+## Restore
+
+Enterprise repository
+
+```
+mv /etc/apt/sources.list.d/pve.list.bak /etc/apt/sources.list.d/pve.list.bak
+```
+
+Branding
+
+```
+cp -f /usr/share/pve-manager/images/{favicon.ico,logo-128.png,proxmox_logo.png}~ /usr/share/pve-patch/images/ && \
+/usr/share/pve-patch/scripts/apply.sh
+```

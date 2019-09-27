@@ -21,12 +21,17 @@ wget -qO - https://raw.githubusercontent.com/kosmonavtika/pve-patch/master/patch
 Enterprise repository
 
 ```
-mv /etc/apt/sources.list.d/pve.list.bak /etc/apt/sources.list.d/pve.list.bak
+mv /etc/apt/sources.list.d/pve-enterprise.list~ /etc/apt/sources.list.d/pve-enterprise.list
 ```
 
 Branding
 
 ```
-cp -f /usr/share/pve-manager/images/{favicon.ico,logo-128.png,proxmox_logo.png}~ /usr/share/pve-patch/images/ && \
+cp -f /usr/share/pve-manager/images/favicon.ico~ \
+/usr/share/pve-patch/images/favicon.ico && \
+cp -f /usr/share/pve-manager/images/logo-128.png~ \
+/usr/share/pve-patch/images/logo-128.png && \
+cp -f /usr/share/pve-manager/images/proxmox_logo.png~ \
+/usr/share/pve-patch/images/proxmox_logo.png && \
 /usr/share/pve-patch/scripts/apply.sh
 ```

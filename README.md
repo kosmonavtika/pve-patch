@@ -38,3 +38,9 @@ cp -f /usr/share/pve-manager/images/proxmox_logo.png~ \
 /usr/share/pve-patch/images/proxmox_logo.png && \
 /usr/share/pve-patch/scripts/apply.sh
 ```
+
+## Test
+
+```
+vagrant up
+```

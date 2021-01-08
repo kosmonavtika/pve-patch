@@ -9,12 +9,14 @@ FREE_REPO_LIST=$(cat <<-EOF
 deb http://download.proxmox.com/debian/pve ${DEBIAN_CODENAME} pve-no-subscription
 EOF
 )
+JSLIBFILE="/usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js"
 
 function pve_patch() {
   echo "- apply patch..."
   echo "$FREE_REPO_LIST" > $FREE_REPO_FILE
   [ -f $ENTERPRISE_REPO_LIST ] && mv $ENTERPRISE_REPO_LIST $ENTERPRISE_REPO_LIST~
-  sed -i.bak "s/data.status !== 'Active'/false/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js
+  grep -q "data.status !== 'Active'" $JSLIBFILE &&
+    sed -i.bak "s/data.status !== 'Active'/false/g" $JSLIBFILE
 }
 
 pve_patch

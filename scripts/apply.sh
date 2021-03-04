@@ -15,8 +15,8 @@ function pve_patch() {
   echo "- apply patch..."
   echo "$FREE_REPO_LIST" > $FREE_REPO_FILE
   [ -f $ENTERPRISE_REPO_LIST ] && mv $ENTERPRISE_REPO_LIST $ENTERPRISE_REPO_LIST~
-  grep -q "data.status !== 'Active'" $JSLIBFILE &&
-    sed -i.bak "s/data.status !== 'Active'/false/g" $JSLIBFILE
+  grep -iq "data.status[^ ]* !== 'Active'" $JSLIBFILE &&
+    sed -i.bak -z "s/if ([^{]*data.status[^ ]* !== 'active'[^{]*) {/if (false) {/gi" $JSLIBFILE
 }
 
 pve_patch

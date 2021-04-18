@@ -25,6 +25,7 @@ function pve_patch() {
   sed -i -z "s/REPLACEME.*data.status !== 'Active'/false/" ${JSLIBFILE}
   # (6.2-15 6.3-2 6.3-3 6.3-4 6.3-6 and up)
   sed -i -z "s/REPLACEME.*.data.status.toLowerCase() !== 'active'/false/" ${JSLIBFILE}
+  systemctl restart pveproxy.service
   
 }
 

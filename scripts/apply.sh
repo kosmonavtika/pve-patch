@@ -15,8 +15,14 @@ function pve_patch() {
   echo "- apply patch..."
   echo "$FREE_REPO_LIST" > $FREE_REPO_FILE
   [ -f $ENTERPRISE_REPO_LIST ] && mv $ENTERPRISE_REPO_LIST $ENTERPRISE_REPO_LIST~
-  grep -q "data.status !== 'Active'" $JSLIBFILE &&
-    sed -i.bak "s/data.status !== 'Active'/false/g" $JSLIBFILE
+  # (6.1 and up)
+  sed -i "s|if (data.status !== 'Active')|if (false)|g" $JSLIBFILE
+  # (6.2-11 and up)
+  sed -i -z "s/res.*res.*.false/false/g" $JSLIBFILE
+  # (6.2-12 and up)
+  sed -i -z "s/res.*res.*.data.status !== 'Active'/false/g" $JSLIBFILE
+  # (6.2-15 6.3-2 6.3-3 6.3-4 6.3-6 and up)
+  sed -i -z "s/res.*res.*.data.status.toLowerCase() !== 'active'/false/g" $JSLIBFILE
 }
 
 pve_patch

@@ -18,5 +18,5 @@ diff -y ${TESTFILE} ${CONTROLFILE}
 echo '===================================================='
 echo "Run the below to reset the ${TESTFILE} file after replacements with ${ORIGINALFILE}"
 echo '===================================================='
-rm -f "${TESTFILE}" && cp "${ORIGINALFILE}" "${TESTFILE}"
+echo "rm -f ${TESTFILE} && cp ${ORIGINALFILE} ${TESTFILE}"
 echo '===================================================='

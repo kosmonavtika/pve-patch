@@ -17,12 +17,15 @@ function pve_patch() {
   [ -f $ENTERPRISE_REPO_LIST ] && mv $ENTERPRISE_REPO_LIST $ENTERPRISE_REPO_LIST~
   # (6.1 and up)
   sed -i "s|if (data.status !== 'Active')|if (false)|g" ${JSLIBFILE}
+  # Anchor so we can safely replace what we want for multiline
+  sed -i 's|res === null \|\| res === undefined \|\| \!res \|\| res|REPLACEME|' ${JSLIBFILE}
   # (6.2-11 and up)
-  sed -i -z "s/res.*res.*.false/false/g" $JSLIBFILE
+  sed -i -z "s/REPLACEME.*.false/false/" ${JSLIBFILE}
   # (6.2-12 and up)
-  sed -i -z "s/res.*res.*.data.status !== 'Active'/false/g" ${JSLIBFILE}
+  sed -i -z "s/REPLACEME.*data.status !== 'Active'/false/" ${JSLIBFILE}
   # (6.2-15 6.3-2 6.3-3 6.3-4 6.3-6 and up)
-  sed -i -z "s/res.*res.*.data.status.toLowerCase() !== 'active'/false/g" ${JSLIBFILE}
+  sed -i -z "s/REPLACEME.*.data.status.toLowerCase() !== 'active'/false/" ${JSLIBFILE}
+  
 }
 
 pve_patch
